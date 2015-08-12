@@ -1,0 +1,5 @@
+services:
+  gearman_monitor.command.monitor:
+    class: EnlightenedDC\GearmanMonitorBundle\Command\MonitorCommand
+    tags:
+      - { name: console.command }
