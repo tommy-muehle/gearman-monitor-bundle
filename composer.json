@@ -1,0 +1,31 @@
+{
+  "name": "enlightened-dc/gearman-monitor-bundle",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Tommy Muehle",
+      "email": "tommy.muehle@gmail.com"
+    },
+    {
+      "name": "Michael Schindler",
+      "email": "mi-schi@gmx.net"
+    }
+  ],
+  "require": {
+    "ext-gearman": "*",
+    "sensio/framework-extra-bundle": "2.3.4",
+    "symfony/framework-bundle": ">=2.2",
+    "symfony/console": ">=2.1"
+  },
+  "require-dev": {
+    "symfony/symfony": "2.3.*"
+  },
+  "target-dir": "EnlightenedDC/GearmanMonitorBundle",
+  "autoload": {
+    "psr-4": { "EnlightenedDC\\GearmanMonitorBundle": "" }
+  },
+  "suggest": {
+    "mmoreram/gearman-bundle": ""
+  }
+}
