@@ -4,6 +4,7 @@ namespace EnlightenedDC\GearmanMonitorBundle\Model;
 
 /**
  * Class Status
+ *
  * @package EnlightenedDC\GearmanMonitorBundle\Model
  */
 class Status
@@ -29,25 +30,19 @@ class Status
     private $availableWorkers = 0;
 
     /**
-     * @param string $jobName
-     * @param int    $queuedJobs
-     * @param int    $runningJobs
-     * @param int    $availableWorkers
-     */
-    public function __construct($jobName, $queuedJobs, $runningJobs, $availableWorkers)
-    {
-        $this->jobName = $jobName;
-        $this->queuedJobs = $queuedJobs;
-        $this->runningJobs = $runningJobs;
-        $this->availableWorkers = $availableWorkers;
-    }
-
-    /**
      * @return string
      */
     public function getJobName()
     {
         return $this->jobName;
+    }
+
+    /**
+     * @param string $jobName
+     */
+    public function setJobName($jobName)
+    {
+        $this->jobName = $jobName;
     }
 
     /**
@@ -59,6 +54,14 @@ class Status
     }
 
     /**
+     * @param int $queuedJobs
+     */
+    public function setQueuedJobs($queuedJobs)
+    {
+        $this->queuedJobs = $queuedJobs;
+    }
+
+    /**
      * @return int
      */
     public function getRunningJobs()
@@ -67,10 +70,26 @@ class Status
     }
 
     /**
+     * @param int $runningJobs
+     */
+    public function setRunningJobs($runningJobs)
+    {
+        $this->runningJobs = $runningJobs;
+    }
+
+    /**
      * @return int
      */
     public function getAvailableWorkers()
     {
         return $this->availableWorkers;
+    }
+
+    /**
+     * @param int $availableWorkers
+     */
+    public function setAvailableWorkers($availableWorkers)
+    {
+        $this->availableWorkers = $availableWorkers;
     }
 }

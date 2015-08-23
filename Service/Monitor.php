@@ -2,11 +2,12 @@
 
 namespace EnlightenedDC\GearmanMonitorBundle\Service;
 
-use EnlightenedDC\GearmanMonitorBundle\Exception\NoGearmanConnectionException;
+use EnlightenedDC\GearmanMonitorBundle\Exception\GearmanConnectionException;
 use EnlightenedDC\GearmanMonitorBundle\Model\Status;
 
 /**
  * Class Monitor
+ *
  * @package EnlightenedDC\GearmanMonitorBundle\Service
  */
 class Monitor
@@ -27,24 +28,29 @@ class Monitor
 
     /**
      * @param string $job
-     * @return array
      *
-     * @throws NoGearmanConnectionException
+     * @return Status[]
      */
-    public function getInformations($job = null)
+    public function getStatusData($job = null)
     {
-        $status = [];
+        $statusData = [];
 
         foreach ($this->connector->call() as $line) {
-            list($name, $total, $running, $availableWorkers) = explode("\t", $line);
+            list($jobName, $queuedJobs, $runningJobs, $availableWorkers) = explode("\t", $line);
 
-            if (null !== $job && $job !== $name) {
+            if (null !== $job && $job !== $jobName) {
                 continue;
             }
 
-            $status[] = new Status($name, $total, $running, $availableWorkers);
+            $status = new Status();
+            $status->setJobName($jobName);
+            $status->setQueuedJobs($queuedJobs);
+            $status->setRunningJobs($runningJobs);
+            $status->setAvailableWorkers($availableWorkers);
+
+            $statusData[] = $status;
         }
 
-        return $status;
+        return $statusData;
     }
 }
