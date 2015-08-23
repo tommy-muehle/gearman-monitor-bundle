@@ -46,7 +46,7 @@ EOF
     /**
      * @param InputInterface  $input
      * @param OutputInterface $output
-     * 
+     *
      * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -62,29 +62,28 @@ EOF
             $output->writeln(sprintf('<info>Server: %s</info>', $key));
             $monitor = new Monitor($configuration['host'], $configuration['port']);
 
-            $table = $this->getTable($monitor->getInformations($input->getArgument('job')));
+            $table = $this->getTable($monitor->getStatusData($input->getArgument('job')));
             $table->render($output);
         }
     }
 
     /**
-     * @param array $informations
+     * @param Status[] $statusData
      *
      * @return \Symfony\Component\Console\Helper\TableHelper
      */
-    protected function getTable(array $informations)
+    protected function getTable(array $statusData)
     {
         /* @var $table \Symfony\Component\Console\Helper\TableHelper */
         $table = $this->getHelper('table');
         $table->setHeaders(['Job name', 'Available workers', 'Total jobs', 'Running jobs']);
 
-        /* @var $information Status */
-        foreach ($informations as $information) {
+        foreach ($statusData as $status) {
             $table->addRow([
-                $information->getJobName(),
-                $information->getAvailableWorkers(),
-                $information->getQueuedJobs(),
-                $information->getRunningJobs()
+                $status->getJobName(),
+                $status->getAvailableWorkers(),
+                $status->getQueuedJobs(),
+                $status->getRunningJobs()
             ]);
         }
 
