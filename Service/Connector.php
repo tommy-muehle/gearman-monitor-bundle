@@ -2,10 +2,11 @@
 
 namespace EnlightenedDC\GearmanMonitorBundle\Service;
 
-use EnlightenedDC\GearmanMonitorBundle\Exception\NoGearmanConnectionException;
+use EnlightenedDC\GearmanMonitorBundle\Exception\GearmanConnectionException;
 
 /**
  * Class Connector
+ *
  * @package EnlightenedDC\GearmanMonitorBundle\Service
  */
 class Connector
@@ -19,7 +20,7 @@ class Connector
      * @param string $host
      * @param int    $port
      *
-     * @throws NoGearmanConnectionException
+     * @throws GearmanConnectionException
      */
     public function __construct($host, $port)
     {
@@ -29,7 +30,7 @@ class Connector
         $this->handle = @fsockopen($host, $port, $errorNumber, $errorMessage, 2);
 
         if (false === $this->handle) {
-            throw new NoGearmanConnectionException;
+            throw new GearmanConnectionException;
         }
     }
 
@@ -57,7 +58,7 @@ class Connector
     }
 
     /**
-     * Closes the open file pointer 
+     * Closes the open file pointer
      */
     public function __destruct()
     {

@@ -7,6 +7,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
  * Class Configuration
+ *
  * @package EnlightenedDC\GearmanMonitorBundle\DependencyInjection
  */
 class Configuration implements ConfigurationInterface
