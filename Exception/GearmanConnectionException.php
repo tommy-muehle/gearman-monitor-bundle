@@ -3,9 +3,10 @@
 namespace EnlightenedDC\GearmanMonitorBundle\Exception;
 
 /**
- * Class NoGearmanConnectionException
+ * Class GearmanConnectionException
+ *
  * @package EnlightenedDC\GearmanMonitorBundle\Exception
  */
-class NoGearmanConnectionException extends \Exception
+class GearmanConnectionException extends \Exception
 {
 }
