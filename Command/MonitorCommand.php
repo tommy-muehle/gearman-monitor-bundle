@@ -2,8 +2,9 @@
 
 namespace EnlightenedDC\GearmanMonitorBundle\Command;
 
-use EnlightenedDC\GearmanMonitorBundle\Model\Status;
-use EnlightenedDC\GearmanMonitorBundle\Service\Monitor;
+use EnlightenedDC\Gearman\Connection;
+use EnlightenedDC\Gearman\Request;
+use EnligtenedDC\GearmanMonitorBundle\Report\CliReport;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -46,48 +47,32 @@ EOF
     /**
      * @param InputInterface  $input
      * @param OutputInterface $output
-     * 
+     *
      * @return void
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $server = $input->getArgument('server');
+        $job = $input->getArgument('job');
+
         $servers = $this->getContainer()->getParameter('gearman.servers');
+        $cliReport = new CliReport();
 
         foreach ($servers as $key => $configuration) {
-            if (null !== $server && $key !== $server) {
-                continue;
+            $connection = new Connection($configuration);
+            $response = $connection->send(new Request('status'));
+
+            if (null !== $server) {
+                $cliReport->ignoreServer($server);
             }
 
-            $output->writeln(sprintf('<info>Server: %s</info>', $key));
-            $monitor = new Monitor($configuration['host'], $configuration['port']);
+            if (null !== $job) {
+                $cliReport->ignoreJob($job);
+            }
 
-            $table = $this->getTable($monitor->getInformations($input->getArgument('job')));
-            $table->render($output);
-        }
-    }
-
-    /**
-     * @param array $informations
-     *
-     * @return \Symfony\Component\Console\Helper\TableHelper
-     */
-    protected function getTable(array $informations)
-    {
-        /* @var $table \Symfony\Component\Console\Helper\TableHelper */
-        $table = $this->getHelper('table');
-        $table->setHeaders(['Job name', 'Available workers', 'Total jobs', 'Running jobs']);
-
-        /* @var $information Status */
-        foreach ($informations as $information) {
-            $table->addRow([
-                $information->getJobName(),
-                $information->getAvailableWorkers(),
-                $information->getQueuedJobs(),
-                $information->getRunningJobs()
-            ]);
+            $cliReport->addStates($server, $response);
         }
 
-        return $table;
+        $cliReport->render();
     }
 }

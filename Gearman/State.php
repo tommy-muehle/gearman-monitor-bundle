@@ -1,12 +1,13 @@
 <?php
 
-namespace EnlightenedDC\GearmanMonitorBundle\Model;
+namespace EnligtenedDC\GearmanMonitorBundle\Gearman;
 
 /**
- * Class Status
- * @package EnlightenedDC\GearmanMonitorBundle\Model
+ * Class State
+ *
+ * @package EnligtenedDC\GearmanMonitorBundle\Gearman
  */
-class Status
+class State
 {
     /**
      * @var string
