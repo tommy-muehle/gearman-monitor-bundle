@@ -9,6 +9,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * Class GearmanMonitorExtension
+ *
  * @package EnlightenedDC\GearmanMonitorBundle\DependencyInjection
  */
 class GearmanMonitorExtension extends Extension
