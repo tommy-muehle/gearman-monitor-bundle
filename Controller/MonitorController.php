@@ -6,6 +6,7 @@ use EnlightenedDC\Gearman\Connection;
 use EnlightenedDC\Gearman\Request;
 use EnlightenedDC\GearmanMonitorBundle\Report\HtmlReport;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class MonitorController
@@ -30,6 +31,6 @@ class MonitorController extends Controller
             $report->addStates($key, $response);
         }
 
-        return $report->render();
+        return new Response($report->render());
     }
 }
