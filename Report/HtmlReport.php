@@ -1,19 +1,35 @@
 <?php
 
-namespace EnligtenedDC\GearmanMonitorBundle\Report;
+namespace EnlightenedDC\GearmanMonitorBundle\Report;
 
 /**
  * Class HtmlReport
  *
- * @package EnligtenedDC\GearmanMonitorBundle\Report
+ * @package EnlightenedDC\GearmanMonitorBundle\Report
  */
 class HtmlReport extends AbstractReport
 {
+    /**
+     * @var \Twig_Environment
+     */
+    private $twig;
+
+    /**
+     * @param \Twig_Environment $twig
+     */
+    public function __construct(\Twig_Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
     /**
      * @return string
      */
     public function render()
     {
-        return '@todo';
+        return $this->twig->render(
+            __DIR__ . '/../Resources/views/monitor.html.twig',
+            ['states' => $this->states]
+        );
     }
 }

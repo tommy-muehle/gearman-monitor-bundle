@@ -1,0 +1,5 @@
+gearman_monitor_index:
+    pattern: /gearman/monitor
+    defaults: { _controller: GearmanMonitorBundle:Monitor:index }
+    requirements:
+        _method: GET

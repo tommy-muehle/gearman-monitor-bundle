@@ -1,0 +1,14 @@
+<html>
+<head>
+</head>
+<body>
+<h1>@Todo</h1>
+{% for key,state in states %}
+    <h2>{{ key }}</h2>
+    {{ state.jobName }}
+    {{ state.queuedJobs }}
+    {{ state.runningJobs }}
+    {{ state.availableWorkers }}
+{% endfor %}
+</body>
+</html>
