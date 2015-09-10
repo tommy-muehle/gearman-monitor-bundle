@@ -28,7 +28,7 @@ class HtmlReport extends AbstractReport
     public function render()
     {
         return $this->twig->render(
-            __DIR__ . '/../Resources/views/monitor.html.twig',
+            realpath(__DIR__ . '/../Resources/views/monitor.html.twig'),
             ['states' => $this->states]
         );
     }
