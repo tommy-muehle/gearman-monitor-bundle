@@ -22,9 +22,8 @@
   "require-dev": {
     "symfony/symfony": "2.3.*"
   },
-  "target-dir": "EnlightenedDC/GearmanMonitorBundle",
   "autoload": {
-    "psr-4": { "EnlightenedDC\\GearmanMonitorBundle": "" }
+    "psr-4": { "EnlightenedDC\\GearmanMonitorBundle\\": "" }
   },
   "suggest": {
     "mmoreram/gearman-bundle": ""
