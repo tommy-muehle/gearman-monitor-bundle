@@ -1,15 +1,15 @@
 <?php
 
-namespace EnligtenedDC\GearmanMonitorBundle\Report;
+namespace EnlightenedDC\GearmanMonitorBundle\Report;
 
-use EnligtenedDC\GearmanMonitorBundle\Gearman\State;
+use EnlightenedDC\GearmanMonitorBundle\Gearman\State;
 use Symfony\Component\Console\Helper\TableHelper;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
 /**
  * Class CliReport
  *
- * @package EnligtenedDC\GearmanMonitorBundle\Report
+ * @package EnlightenedDC\GearmanMonitorBundle\Report
  */
 class CliReport extends AbstractReport
 {

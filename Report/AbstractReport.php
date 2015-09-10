@@ -1,14 +1,14 @@
 <?php
 
-namespace EnligtenedDC\GearmanMonitorBundle\Report;
+namespace EnlightenedDC\GearmanMonitorBundle\Report;
 
 use EnlightenedDC\Gearman\Response;
-use EnligtenedDC\GearmanMonitorBundle\Gearman\State;
+use EnlightenedDC\GearmanMonitorBundle\Gearman\State;
 
 /**
  * Class AbstractReport
  *
- * @package EnligtenedDC\GearmanMonitorBundle\Report
+ * @package EnlightenedDC\GearmanMonitorBundle\Report
  */
 abstract class AbstractReport
 {

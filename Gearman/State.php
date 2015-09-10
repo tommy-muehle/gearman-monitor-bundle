@@ -1,11 +1,11 @@
 <?php
 
-namespace EnligtenedDC\GearmanMonitorBundle\Gearman;
+namespace EnlightenedDC\GearmanMonitorBundle\Gearman;
 
 /**
  * Class State
  *
- * @package EnligtenedDC\GearmanMonitorBundle\Gearman
+ * @package EnlightenedDC\GearmanMonitorBundle\Gearman
  */
 class State
 {

@@ -4,7 +4,7 @@ namespace EnlightenedDC\GearmanMonitorBundle\Command;
 
 use EnlightenedDC\Gearman\Connection;
 use EnlightenedDC\Gearman\Request;
-use EnligtenedDC\GearmanMonitorBundle\Report\CliReport;
+use EnlightenedDC\GearmanMonitorBundle\Report\CliReport;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
